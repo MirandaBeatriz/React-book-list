@@ -1,0 +1,11 @@
+.Categoria{
+    text-align: center;
+    padding: 32px;
+}
+
+.Categoria h3{
+    display: inline-block;
+    font-size: 32px;
+    padding-bottom: 8px;
+    border-bottom: 4px solid;
+} 

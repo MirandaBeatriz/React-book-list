@@ -1,30 +1,25 @@
 
 import { useState } from 'react'
 import CampoTexto from '../CampoTexto'
+import CampoFile from '../CampoFile'
 import DropDown from '../DropDown'
 import Botao from '../Botao'
 import './Formulario.css'
 
 const Formulario = (props) => {
-    const Categorias = [
-        'Terror',
-        'Ficção Científica',
-        'Romance',
-        'Fantasia'
-    ] 
-    
     const [nome,setNome] = useState('')
     const [autor,setAutor] = useState('')
+    const [imagem,setImagem] = useState('')
     const [categoria,setCategoria] = useState('')
 
-    
     const aoSalvar = (evento) => {
         evento.preventDefault()
 
         props.aoLivroCadastrao({
             nome,
             autor,
-            categoria
+            imagem,
+            categoria,
         })
     }
 
@@ -32,24 +27,32 @@ const Formulario = (props) => {
         <section className='formulario'>
             <form onSubmit={aoSalvar}>
                 <h2>Preencha os dados referente aos livros</h2>
+                <img src={imagem} alt={nome}></img>
                 <CampoTexto 
-                    obrigatirio = {true}  
+                    obrigatorio = {true}  
                     label="Título" 
                     placeholder="Digite o título" 
                     valor={nome}
                     aoAlterado={valor => setNome(valor)}
                 />
                 <CampoTexto 
-                    obrigatirio = {true}  
+                    obrigatorio = {true}  
                     label="Autor" 
                     placeholder="Digite o nome do autor" 
                     valor={autor}
                     aoAlterado={valor => setAutor(valor)}
                 />
+                <CampoFile 
+                    obrigatorio = {false}  
+                    label="Imagem" 
+                    placeholder="Imagem" 
+                    valor={imagem}
+                    aoAlterado={valor => setImagem(valor)}
+                />
                 <DropDown   
-                    obrigatirio = {true}  
+                    obrigatorio = {true}  
                     label = "Categorias" 
-                    itens = {Categorias} 
+                    itens = {props.categorias} 
                     valor={categoria}
                     aoAlterado={valor => setCategoria(valor)}
                 />
