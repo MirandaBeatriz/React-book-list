@@ -1,0 +1,16 @@
+.Footer{
+    margin-top: 80px;
+    padding: 15px 0;
+    background-color: #250733;
+}
+
+.Footer div{
+    width: 90%;
+    max-width: 1175px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.Footer img{
+    max-width: 135px;
+}

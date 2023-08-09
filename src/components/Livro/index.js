@@ -1,15 +1,16 @@
 import './Livro.css'
 
-const Livro = (props) => {
-
+const Livro = ({nome,autor,imagem,backgroundColor}) => {
+    
     return (
+    
         <div className='Livro'>
-            <div className='cabecalho'>
-                <img src={props.imagem} alt={props.nome}/>
+            <div className='cabecalho' style={{backgroundColor: backgroundColor}}>
+                <img src="https://nidcap.org/wp-content/uploads/2021/03/book.png" alt={nome}/>
             </div>
             <div className='rodape'>
-                <h4>{props.nome}</h4>
-                <h5>{props.autor}</h5>
+                <h4 style={{color: backgroundColor}}>{nome}</h4>
+                <h5>{autor}</h5>
             </div>
         </div>
     )

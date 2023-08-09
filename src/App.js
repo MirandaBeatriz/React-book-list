@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Banner from './components/Banner';
 import Formulario from './components/Formulario';
 import Categoria from './components/Categoria';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -9,32 +10,33 @@ const categorias = [
   {
     nome:'Terror',
     key: 0,
-    corPrimaria: '#57c278',
-    corSecundaria: '#d9f7e9'
+    corPrimaria: '#330000',
+    corSecundaria: '#855050'
   },
   {
     nome: 'Fantasia',
     key: 3,
-    corPrimaria: '#E06B69',
-    corSecundaria: '#FDE7E8'
+    corPrimaria: '#250733',
+    corSecundaria: '#442858'
   },
   {
     nome: 'Ficção Científica',
     key: 1,
-    corPrimaria: '#82cffa',
-    corSecundaria: '#e8f8ff'
+    corPrimaria: '#000833',
+    corSecundaria: '#38406c'
   },
   {
     nome: 'Romance',
     key: 2,
-    corPrimaria: '#d195ff',
-    corSecundaria: '#f4e8f7'
+    corPrimaria: '#330014',
+    corSecundaria: '#523550'
   },
 ]
   
   const [livros, setLivros] = useState([])
   
   const NovoLivroAdd = (livro) => {
+    debugger
     setLivros([...livros,livro])
   }
 
@@ -52,9 +54,10 @@ const categorias = [
           nome={ categoria.nome }
           corPrimaria={categoria.corPrimaria}
           corSecundaria={categoria.corSecundaria}
-          livros={livros}
+          livros={ livros.filter(livro => livro.categoria === categoria.nome) }
         />
         )}
+        <Footer/>
     </div>
   );
 }

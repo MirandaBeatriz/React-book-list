@@ -1,7 +1,7 @@
 
 import { useState } from 'react'
 import CampoTexto from '../CampoTexto'
-import CampoFile from '../CampoFile'
+//import CampoFile from '../CampoFile'
 import DropDown from '../DropDown'
 import Botao from '../Botao'
 import './Formulario.css'
@@ -14,20 +14,24 @@ const Formulario = (props) => {
 
     const aoSalvar = (evento) => {
         evento.preventDefault()
-
         props.aoLivroCadastrao({
             nome,
             autor,
             imagem,
             categoria,
         })
+
+        setNome('')
+        setAutor('')
+        setImagem('')
+        setCategoria('')
     }
 
     return (
         <section className='formulario'>
             <form onSubmit={aoSalvar}>
                 <h2>Preencha os dados referente aos livros</h2>
-                <img src={imagem} alt={nome}></img>
+                
                 <CampoTexto 
                     obrigatorio = {true}  
                     label="Título" 
@@ -41,13 +45,6 @@ const Formulario = (props) => {
                     placeholder="Digite o nome do autor" 
                     valor={autor}
                     aoAlterado={valor => setAutor(valor)}
-                />
-                <CampoFile 
-                    obrigatorio = {false}  
-                    label="Imagem" 
-                    placeholder="Imagem" 
-                    valor={imagem}
-                    aoAlterado={valor => setImagem(valor)}
                 />
                 <DropDown   
                     obrigatorio = {true}  
