@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import Navbar from './components/Navbar';
 import Banner from './components/Banner';
 import Formulario from './components/Formulario';
 import Categoria from './components/Categoria';
 import Footer from './components/Footer';
+import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
 
 function App() {
 
@@ -36,13 +38,16 @@ const categorias = [
   const [livros, setLivros] = useState([])
   
   const NovoLivroAdd = (livro) => {
-    debugger
+    //debugger
     setLivros([...livros,livro])
   }
 
   return (
     <div className="App">
+      <Navbar />
+
       <Banner />
+
       <Formulario 
         categorias={categorias.map(categoria => categoria.nome)}
         aoLivroCadastrao = { livro => NovoLivroAdd(livro) }
